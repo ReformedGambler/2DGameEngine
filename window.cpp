@@ -1,4 +1,6 @@
 #include <Windows.h>
+#include "window.h"
+#include "renderer.h"
 
 // WndProc
 LRESULT CALLBACK WndProc(
@@ -13,36 +15,29 @@ LRESULT CALLBACK WndProc(
             PostQuitMessage(0);
         }
         return 0;
-
-    case WM_PAINT:
-        // Code here
-        return 0;
     }
-
     return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
 // ProcessMessages
 bool ProcessMessages() {
-    BOOL bRet;
     MSG msg;
-    while ((bRet = GetMessage(&msg, nullptr, 0, 0)) != 0)
+    while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
     {
-        if (bRet == -1)
+        if (msg.message == WM_QUIT)
         {
-            // handle the error and possibly exit
-            return 0;
+            MessageBoxW(nullptr, L"WM_QUIT", L"Debug", MB_OK);
+            return false;
         }
-        else
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
+
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
+    return true;
 }
 
 // Initialize Window
-bool InitWindow(HINSTANCE hInst, int cmdShow)
+HWND InitWindow(HINSTANCE hInst, int cmdShow)
 {
     WNDCLASSEXW wc{};
 
@@ -77,5 +72,5 @@ bool InitWindow(HINSTANCE hInst, int cmdShow)
     ShowWindow(hwnd, cmdShow);
     UpdateWindow(hwnd);
 
-    return true;
+    return hwnd;
 }

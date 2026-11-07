@@ -14,6 +14,6 @@ LRESULT CALLBACK WndProc(
 bool ProcessMessages();
 
 // Initialize Window
-bool InitWindow(HINSTANCE hInst, int cmdShow);
+HWND InitWindow(HINSTANCE hInst, int cmdShow);
 
 #endif
