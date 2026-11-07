@@ -3,12 +3,17 @@
 
 #include <Windows.h>
 
+// Initialize WndProc
 LRESULT CALLBACK WndProc(
     _In_    HWND hwnd,
     _In_    UINT msg,
     _In_    WPARAM wParam,
     _In_    LPARAM lParam);
 
+// Initialize Message Loop
+bool ProcessMessages();
+
+// Initialize Window
 bool InitWindow(HINSTANCE hInst, int cmdShow);
 
 #endif

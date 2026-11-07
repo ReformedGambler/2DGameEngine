@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "window.h"
+#include <iostream>
 
 int WINAPI WinMain(
 	_In_ HINSTANCE hInst,
@@ -9,12 +10,12 @@ int WINAPI WinMain(
 		InitWindow(hInst, cmdshow);
 		//InitDirect2D();
 
-		/*while (running) {
-			ProcessMessages();
-			Update();
-			Render();
-		}*/
+		while (ProcessMessages()) {
+			//Update();
+			//Render();
+		}
 
 		//Shutdown();
+
 	return 0;
 }
