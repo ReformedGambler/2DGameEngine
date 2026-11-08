@@ -1,5 +1,3 @@
-#include <Windows.h>
-
 #include "window.h"
 #include "update.h"
 #include "renderer.h"
