@@ -47,6 +47,13 @@ void Render()
 {
     renderTarget->BeginDraw();
 
+    renderTarget->SetTransform(
+        D2D1::Matrix3x2F::Scale(
+            scalingFactor,
+            scalingFactor
+        )
+    );
+
     // Background
     renderTarget->Clear(
         D2D1::ColorF(D2D1::ColorF::White));
@@ -59,10 +66,10 @@ void Render()
 
     // Fill rectangle configurations
     D2D1_RECT_F rect = D2D1::RectF(
-        playerX * scalingFactor,
-        playerY * scalingFactor,
-        (playerX + playerWidth) * scalingFactor,
-        (playerY + playerHeight) * scalingFactor
+        playerX,
+        playerY,
+        playerX + playerWidth,
+        playerY + playerHeight
     );
 
     // Draw rectangle
