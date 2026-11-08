@@ -26,7 +26,7 @@ bool ProcessMessages() {
     {
         if (msg.message == WM_QUIT)
         {
-            MessageBoxW(nullptr, L"WM_QUIT", L"Debug", MB_OK);
+            //MessageBoxW(nullptr, L"WM_QUIT", L"Debug", MB_OK);
             return false;
         }
 
@@ -65,7 +65,7 @@ HWND InitWindow(HINSTANCE hInst, int cmdShow)
     );
 
     if (!hwnd) {
-        MessageBoxW(nullptr, L"CreateWindowExW failed!", L"Error", MB_OK);
+        //MessageBoxW(nullptr, L"CreateWindowExW failed!", L"Error", MB_OK);
         return false;
     }
     

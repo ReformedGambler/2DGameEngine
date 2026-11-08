@@ -3,8 +3,9 @@
 
 #include <d2d1.h>
 
-extern ID2D1Factory* g_pFactory;
-extern ID2D1HwndRenderTarget* g_pRenderTarget;
+extern ID2D1Factory* factory;
+extern ID2D1HwndRenderTarget* renderTarget;
+extern ID2D1SolidColorBrush* brush;
 
 HRESULT D2D1CreateFactory();
 
