@@ -2,6 +2,7 @@
 #define GAMEENGINE_WINDOW_H
 
 #include <Windows.h>
+#include "renderer.h"
 
 // Initialize WndProc
 LRESULT CALLBACK WndProc(

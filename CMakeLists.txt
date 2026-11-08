@@ -10,6 +10,8 @@ add_executable(2DGameEngine WIN32
   window.h
   renderer.cpp
   renderer.h
+  update.cpp
+  update.h
 )
 
 target_link_libraries(2DGameEngine PRIVATE d2d1)

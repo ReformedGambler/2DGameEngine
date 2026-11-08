@@ -1,6 +1,7 @@
 #include <Windows.h>
 
 #include "window.h"
+#include "update.h"
 #include "renderer.h"
 
 int WINAPI WinMain(
@@ -12,7 +13,7 @@ int WINAPI WinMain(
 		InitDirect2D(hwnd);
 
 		while (ProcessMessages()) {
-			//Update();
+			Update();
 			Render();
 		}
 

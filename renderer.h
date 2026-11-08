@@ -2,6 +2,7 @@
 #define GAMEENGINE_RENDERER_H
 
 #include <d2d1.h>
+#include "update.h"
 
 extern ID2D1Factory* factory;
 extern ID2D1HwndRenderTarget* renderTarget;

@@ -1,4 +1,3 @@
-#include <d2d1.h>
 #include "renderer.h"
 
 ID2D1Factory* factory = nullptr;
@@ -45,10 +44,10 @@ void Render()
 
     // Fill rectangle configurations
     D2D1_RECT_F rect = D2D1::RectF(
-        500.0f, // Left
-        500.0f, // Top
-        300.0f, // Right
-        200.0f  // Bottom
+        playerX,
+        playerY,
+        playerX + playerWidth,
+        playerY + playerHeight
     );
 
     // Draw rectangle
