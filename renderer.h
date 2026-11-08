@@ -8,12 +8,12 @@ extern ID2D1Factory* factory;
 extern ID2D1HwndRenderTarget* renderTarget;
 extern ID2D1SolidColorBrush* brush;
 
+float CalculateScalingFactor();
+
 HRESULT D2D1CreateFactory();
 
-// Initialize Direct2D
 bool InitDirect2D(HWND hwnd);
 
-// Render
 void Render();
 
 #endif
