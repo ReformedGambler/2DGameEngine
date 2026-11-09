@@ -44,6 +44,8 @@ bool InitDirect2D(HWND hwnd) {
 }
 
 void DrawPlayer() {
+    if (!playerActive) return;
+
     // Change brush to solid black brush
     renderTarget->CreateSolidColorBrush(
         D2D1::ColorF(D2D1::ColorF::Black),

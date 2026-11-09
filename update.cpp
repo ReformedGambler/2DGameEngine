@@ -1,5 +1,4 @@
 #include "update.h"
-#include <iostream>
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
@@ -89,6 +88,7 @@ void Update() {
 	PlayerMovement();
 	BulletMovement();
 	if (AABBCheck()) {
+		playerActive = false;
 		bulletActive = false;
 	}
 }

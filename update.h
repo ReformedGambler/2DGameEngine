@@ -11,6 +11,7 @@ inline float playerY{ 600.0f };
 inline float playerWidth{ 20.0f };
 inline float playerHeight{ 40.0f };
 inline float playerMovementSpeed{ 200.0f };
+inline bool playerActive{ true };
 
 inline float bulletX{ 622.5f };
 inline float bulletY{ 100.0f };
