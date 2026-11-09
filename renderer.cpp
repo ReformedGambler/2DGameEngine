@@ -67,6 +67,8 @@ void DrawPlayer() {
 }
 
 void DrawBullet() {
+    if (!bulletActive) return;
+
     // Change brush to solid black brush
     renderTarget->CreateSolidColorBrush(
         D2D1::ColorF(D2D1::ColorF::Black),

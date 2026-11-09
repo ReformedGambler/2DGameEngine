@@ -1,4 +1,5 @@
 #include "update.h"
+#include <iostream>
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
@@ -56,7 +57,38 @@ void BulletMovement() {
 	bulletY += bulletMovementSpeed * deltaTime;
 }
 
+bool AABBCheck() {
+	float playerMinX{ playerX };
+	float playerMaxX{ playerX + playerWidth };
+	float playerMinY{ playerY };
+	float playerMaxY{ playerY + playerHeight };
+
+	float bulletMinX{ bulletX };
+	float bulletMaxX{ bulletX + bulletWidth };
+	float bulletMinY{ bulletY };
+	float bulletMaxY{ bulletY + bulletHeight };
+
+	float overlapX{
+		std::fmin(playerMaxX, bulletMaxX) -
+		std::fmax(playerMinX, bulletMinX)
+	};
+
+	float overlapY{
+		std::fmin(playerMaxY, bulletMaxY) -
+		std::fmax(playerMinY, bulletMinY)
+	};
+
+	if (overlapX > 0 && overlapY > 0) {
+		return true;
+	}
+
+	return false;
+}
+
 void Update() {
 	PlayerMovement();
 	BulletMovement();
+	if (AABBCheck()) {
+		bulletActive = false;
+	}
 }
