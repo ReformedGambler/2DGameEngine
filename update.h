@@ -15,6 +15,6 @@ inline double deltaTime{};
 
 void InitTimer();
 void UpdateTimer();
-void Update(double deltaTime);
+void Update();
 
 #endif

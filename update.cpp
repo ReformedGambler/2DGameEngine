@@ -21,7 +21,7 @@ void UpdateTimer() {
 	previousCounter = currentCounter;
 }
 
-void Update(double deltaTime) {
+void Update() {
 	float moveX{};
 	float moveY{};
 	float length{};

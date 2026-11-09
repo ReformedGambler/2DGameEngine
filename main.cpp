@@ -12,7 +12,7 @@ int WINAPI WinMain(
 		InitTimer();
 
 		while (ProcessMessages()) {
-			Update(deltaTime);
+			Update();
 			Render();
 		}
 
