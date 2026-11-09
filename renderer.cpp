@@ -43,21 +43,7 @@ bool InitDirect2D(HWND hwnd) {
     return SUCCEEDED(hr);
 }
 
-void Render()
-{
-    renderTarget->BeginDraw();
-
-    renderTarget->SetTransform(
-        D2D1::Matrix3x2F::Scale(
-            scalingFactor,
-            scalingFactor
-        )
-    );
-
-    // Background
-    renderTarget->Clear(
-        D2D1::ColorF(D2D1::ColorF::White));
-
+void DrawPlayer() {
     // Change brush to solid black brush
     renderTarget->CreateSolidColorBrush(
         D2D1::ColorF(D2D1::ColorF::Black),
@@ -78,6 +64,24 @@ void Render()
         brush,
         1.0f
     );
+}
+
+void Render()
+{
+    renderTarget->BeginDraw();
+
+    renderTarget->SetTransform(
+        D2D1::Matrix3x2F::Scale(
+            scalingFactor,
+            scalingFactor
+        )
+    );
+
+    // Background
+    renderTarget->Clear(
+        D2D1::ColorF(D2D1::ColorF::White));
+
+    DrawPlayer();
 
     renderTarget->EndDraw();
 }
