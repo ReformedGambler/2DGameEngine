@@ -21,7 +21,7 @@ void UpdateTimer() {
 	previousCounter = currentCounter;
 }
 
-void Update() {
+void PlayerMovement() {
 	float moveX{};
 	float moveY{};
 	float length{};
@@ -29,6 +29,7 @@ void Update() {
 	UpdateTimer();
 
 	if (GetAsyncKeyState('W')) {
+		//VK_SPACE
 		moveY -= 1.0f;
 	}
 	if (GetAsyncKeyState('A')) {
@@ -46,6 +47,16 @@ void Update() {
 		moveX /= length;
 		moveY /= length;
 	}
-	playerX += moveX * movementSpeed * deltaTime;
-	playerY += moveY * movementSpeed * deltaTime;
+
+	playerX += moveX * playerMovementSpeed * deltaTime;
+	playerY += moveY * playerMovementSpeed * deltaTime;
+}
+
+void BulletMovement() {
+	bulletY += bulletMovementSpeed * deltaTime;
+}
+
+void Update() {
+	PlayerMovement();
+	BulletMovement();
 }
