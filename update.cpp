@@ -53,20 +53,23 @@ void PlayerMovement() {
 }
 
 void BulletMovement() {
+	// Curve Left
+	bulletX -= (bulletMovementSpeed / 5) * deltaTime;
 	bulletY += bulletMovementSpeed * deltaTime;
+
+	// Curve Right
+	bullet2X += (bullet2MovementSpeed / 5) * deltaTime;
+	bullet2Y += bullet2MovementSpeed * deltaTime;
 }
 
-bool AABBCheck() {
-	float playerMinX{ playerX };
-	float playerMaxX{ playerX + playerWidth };
-	float playerMinY{ playerY };
-	float playerMaxY{ playerY + playerHeight };
-
-	float bulletMinX{ bulletX };
-	float bulletMaxX{ bulletX + bulletWidth };
-	float bulletMinY{ bulletY };
-	float bulletMaxY{ bulletY + bulletHeight };
-
+bool AABBCheck(float playerMinX,
+			   float playerMaxX,
+			   float playerMinY,
+			   float playerMaxY,
+			   float bulletMinX,
+			   float bulletMaxX,
+			   float bulletMinY,
+			   float bulletMaxY) {
 	float overlapX{
 		std::fmin(playerMaxX, bulletMaxX) -
 		std::fmax(playerMinX, bulletMinX)
@@ -84,11 +87,31 @@ bool AABBCheck() {
 	return false;
 }
 
+// Add check if when bullet off screen and stop rendering it
+
 void Update() {
 	PlayerMovement();
 	BulletMovement();
-	if (AABBCheck()) {
-		playerActive = false;
+	if (AABBCheck(
+		playerX,
+		(playerX + playerWidth),
+		playerY,
+		(playerY + playerHeight),
+		bulletX,
+		(bulletX + bulletWidth),
+		bulletY,
+		(bulletY + bulletHeight))) {
 		bulletActive = false;
+	}
+	if (AABBCheck(
+		playerX,
+		(playerX + playerWidth),
+		playerY,
+		(playerY + playerHeight),
+		bullet2X,
+		(bullet2X + bullet2Width),
+		bullet2Y,
+		(bullet2Y + bullet2Height))) {
+		bullet2Active = false;
 	}
 }

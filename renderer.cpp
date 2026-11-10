@@ -93,6 +93,31 @@ void DrawBullet() {
     );
 }
 
+void DrawBullet2() {
+    if (!bullet2Active) return;
+
+    // Change brush to solid black brush
+    renderTarget->CreateSolidColorBrush(
+        D2D1::ColorF(D2D1::ColorF::Black),
+        &brush
+    );
+
+    // Fill rectangle configurations
+    D2D1_RECT_F rect = D2D1::RectF(
+        bullet2X,
+        bullet2Y,
+        bullet2X + bullet2Width,
+        bullet2Y + bullet2Height
+    );
+
+    // Draw rectangle
+    renderTarget->DrawRectangle(
+        rect,
+        brush,
+        1.0f
+    );
+}
+
 void Render()
 {
     renderTarget->BeginDraw();
@@ -110,6 +135,7 @@ void Render()
 
     DrawPlayer();
     DrawBullet();
+    DrawBullet2();
 
     renderTarget->EndDraw();
 }
