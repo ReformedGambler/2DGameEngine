@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "player.h"
 
 ID2D1Factory* factory{ nullptr };
 ID2D1HwndRenderTarget* renderTarget{ nullptr };
@@ -41,31 +42,6 @@ bool InitDirect2D(HWND hwnd) {
         &renderTarget);
 
     return SUCCEEDED(hr);
-}
-
-void DrawPlayer() {
-    if (!playerActive) return;
-
-    // Change brush to solid black brush
-    renderTarget->CreateSolidColorBrush(
-        D2D1::ColorF(D2D1::ColorF::Black),
-        &brush
-    );
-
-    // Fill rectangle configurations
-    D2D1_RECT_F rect = D2D1::RectF(
-        playerX,
-        playerY,
-        playerX + playerWidth,
-        playerY + playerHeight
-    );
-
-    // Draw rectangle
-    renderTarget->DrawRectangle(
-        rect,
-        brush,
-        1.0f
-    );
 }
 
 void DrawBullet() {
@@ -118,7 +94,7 @@ void DrawBullet2() {
     );
 }
 
-void Render()
+void Render(Player& player)
 {
     renderTarget->BeginDraw();
 
@@ -133,7 +109,7 @@ void Render()
     renderTarget->Clear(
         D2D1::ColorF(D2D1::ColorF::White));
 
-    DrawPlayer();
+    player.DebugRender();
     DrawBullet();
     DrawBullet2();
 

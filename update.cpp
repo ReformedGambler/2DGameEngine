@@ -1,4 +1,5 @@
 #include "update.h"
+#include "player.h"
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
@@ -21,37 +22,6 @@ void UpdateTimer() {
 	previousCounter = currentCounter;
 }
 
-void PlayerMovement() {
-	float moveX{};
-	float moveY{};
-	float length{};
-
-	UpdateTimer();
-
-	if (GetAsyncKeyState('W')) {
-		//VK_SPACE
-		moveY -= 1.0f;
-	}
-	if (GetAsyncKeyState('A')) {
-		moveX -= 1.0f;
-	}
-	if (GetAsyncKeyState('S')) {
-		moveY += 1.0f;
-	}
-	if (GetAsyncKeyState('D')) {
-		moveX += 1.0f;
-	}
-
-	length = sqrtf(moveX * moveX + moveY * moveY);
-	if (length > 0.0f) {
-		moveX /= length;
-		moveY /= length;
-	}
-
-	playerX += moveX * playerMovementSpeed * deltaTime;
-	playerY += moveY * playerMovementSpeed * deltaTime;
-}
-
 void BulletMovement() {
 	// Curve Left
 	bulletX -= (bulletMovementSpeed / 5) * deltaTime;
@@ -62,6 +32,7 @@ void BulletMovement() {
 	bullet2Y += bullet2MovementSpeed * deltaTime;
 }
 
+/*
 bool AABBCheck(float playerMinX,
 			   float playerMaxX,
 			   float playerMinY,
@@ -85,13 +56,15 @@ bool AABBCheck(float playerMinX,
 	}
 
 	return false;
-}
+} */
 
-// Add check if when bullet off screen and stop rendering it
+void Update(Player& player) {
+	UpdateTimer();
 
-void Update() {
-	PlayerMovement();
-	BulletMovement();
+	player.Update(deltaTime);
+
+	/* BulletMovement();
+
 	if (AABBCheck(
 		playerX,
 		(playerX + playerWidth),
@@ -113,5 +86,5 @@ void Update() {
 		bullet2Y,
 		(bullet2Y + bullet2Height))) {
 		bullet2Active = false;
-	}
+	} */
 }

@@ -12,6 +12,6 @@ add_executable(2DGameEngine WIN32
   renderer.h
   update.cpp
   update.h
-)
+ "entity.cpp" "entity.h" "vector2.cpp" "vector2.h" "player.cpp" "player.h" "enemy.cpp" "enemy.h" "collision.cpp" "collision.h")
 
 target_link_libraries(2DGameEngine PRIVATE d2d1)

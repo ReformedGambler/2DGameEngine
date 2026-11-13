@@ -1,6 +1,7 @@
 #include "window.h"
 #include "update.h"
 #include "renderer.h"
+#include "player.h"
 
 int WINAPI WinMain(
 	_In_		HINSTANCE hInst,
@@ -10,10 +11,11 @@ int WINAPI WinMain(
 		HWND hwnd = InitWindow(hInst, cmdshow);
 		InitDirect2D(hwnd);
 		InitTimer();
+		Player player;
 
 		while (ProcessMessages()) {
-			Update();
-			Render();
+			Update(player);
+			Render(player);
 		}
 
 		//Shutdown();

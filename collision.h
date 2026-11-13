@@ -1,0 +1,6 @@
+#ifndef GAMEENGINE_COLLISION_H
+#define GAMEENGINE_COLLISION_H
+
+
+
+#endif
