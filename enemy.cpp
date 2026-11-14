@@ -16,15 +16,20 @@ Enemy::Enemy(
 }
 
 void Enemy::SpawnBullet() {
+	float bulletHitboxSizeX{ 5.0f };
+	float bulletHitboxSizeY{ 10.0f };
+
 	for (int i = 0; i < 50; i++) {
 		Vector2 centre(
-			position.x + hitboxSize.x / 2.0f,
+			(position.x + hitboxSize.x / 2.0f) - (bulletHitboxSizeX / 2.0f),
 			position.y + hitboxSize.y / 2.0f
 		);
 
 		bullets.emplace_back(
 			centre,
-			Vector2(5.0f, 10.0f),
+			Vector2(
+				bulletHitboxSizeX,
+				bulletHitboxSizeY),
 			100.0f,
 			0.0f,
 			0.0f
