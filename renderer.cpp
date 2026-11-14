@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include "player.h"
+#include "enemy.h"
 
 ID2D1Factory* factory{ nullptr };
 ID2D1HwndRenderTarget* renderTarget{ nullptr };
@@ -44,57 +45,7 @@ bool InitDirect2D(HWND hwnd) {
     return SUCCEEDED(hr);
 }
 
-void DrawBullet() {
-    if (!bulletActive) return;
-
-    // Change brush to solid black brush
-    renderTarget->CreateSolidColorBrush(
-        D2D1::ColorF(D2D1::ColorF::Black),
-        &brush
-    );
-
-    // Fill rectangle configurations
-    D2D1_RECT_F rect = D2D1::RectF(
-        bulletX,
-        bulletY,
-        bulletX + bulletWidth,
-        bulletY + bulletHeight
-    );
-
-    // Draw rectangle
-    renderTarget->DrawRectangle(
-        rect,
-        brush,
-        1.0f
-    );
-}
-
-void DrawBullet2() {
-    if (!bullet2Active) return;
-
-    // Change brush to solid black brush
-    renderTarget->CreateSolidColorBrush(
-        D2D1::ColorF(D2D1::ColorF::Black),
-        &brush
-    );
-
-    // Fill rectangle configurations
-    D2D1_RECT_F rect = D2D1::RectF(
-        bullet2X,
-        bullet2Y,
-        bullet2X + bullet2Width,
-        bullet2Y + bullet2Height
-    );
-
-    // Draw rectangle
-    renderTarget->DrawRectangle(
-        rect,
-        brush,
-        1.0f
-    );
-}
-
-void Render(Player& player)
+void Render(Player& player, Enemy& enemy)
 {
     renderTarget->BeginDraw();
 
@@ -109,9 +60,11 @@ void Render(Player& player)
     renderTarget->Clear(
         D2D1::ColorF(D2D1::ColorF::White));
 
-    player.DebugRender();
-    DrawBullet();
-    DrawBullet2();
+    // Debug Rendering
+    if (debugRender) {
+        player.DebugRender();
+        enemy.DebugRender();
+    }
 
     renderTarget->EndDraw();
 }

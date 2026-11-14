@@ -1,11 +1,18 @@
 #include "player.h"
 
-Player::Player() {
-	position = { 615.0f, 600.0f };
-	health = { 100.0f };
-	damage = { 1.0f };
-	speed = { 200.0f };
-	hitboxSize = { 20.0f, 40.0f };
+Player::Player(
+	Vector2 position,
+	Vector2 hitboxSize,
+	float speed,
+	float health,
+	float damage)
+	:
+	Entity(position,
+		   hitboxSize,
+		   speed,
+		   health,
+		   damage) {
+
 }
 
 void Player::MouseInput() {

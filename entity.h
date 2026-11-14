@@ -2,9 +2,19 @@
 #define GAMEENGINE_ENTITY_H
 
 #include "vector2.h"
+#include "renderer.h"
+
+class Renderer;
 
 class Entity {
 public:
+	Entity(Vector2 position,
+		   Vector2 hitboxSize,
+		   float speed,
+		   float health,
+		   float damage
+	);
+
 	Vector2 position;
 	Vector2 hitboxSize;
 

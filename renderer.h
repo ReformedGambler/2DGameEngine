@@ -5,14 +5,17 @@
 #include "update.h"
 
 class Player;
+class Enemy;
 
 extern ID2D1Factory* factory;
 extern ID2D1HwndRenderTarget* renderTarget;
 extern ID2D1SolidColorBrush* brush;
 
+inline bool debugRender{ true };
+
 float CalculateScalingFactor();
 HRESULT D2D1CreateFactory();
 bool InitDirect2D(HWND hwnd);
-void Render(Player& player);
+void Render(Player& player, Enemy& enemy);
 
 #endif

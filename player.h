@@ -5,11 +5,15 @@
 #include <cmath>
 
 #include "entity.h"
-#include "renderer.h"
 
 class Player : public Entity {
 public:
-	Player();
+	Player(Vector2 position,
+		   Vector2 hitboxSize,
+		   float speed,
+		   float health,
+		   float damage
+	);
 
 	void MouseInput();
 	void KeyboardInput(double deltaTime);

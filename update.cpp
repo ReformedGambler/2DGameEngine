@@ -1,5 +1,6 @@
 #include "update.h"
 #include "player.h"
+#include "enemy.h"
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
@@ -20,16 +21,6 @@ void UpdateTimer() {
 	deltaTime = (currentCounter - previousCounter) /
 				static_cast<double>(frequency.QuadPart);
 	previousCounter = currentCounter;
-}
-
-void BulletMovement() {
-	// Curve Left
-	bulletX -= (bulletMovementSpeed / 5) * deltaTime;
-	bulletY += bulletMovementSpeed * deltaTime;
-
-	// Curve Right
-	bullet2X += (bullet2MovementSpeed / 5) * deltaTime;
-	bullet2Y += bullet2MovementSpeed * deltaTime;
 }
 
 /*
@@ -58,13 +49,12 @@ bool AABBCheck(float playerMinX,
 	return false;
 } */
 
-void Update(Player& player) {
+void Update(Player& player, Enemy& enemy) {
 	UpdateTimer();
-
 	player.Update(deltaTime);
+	enemy.Update(deltaTime);
 
-	/* BulletMovement();
-
+	/*
 	if (AABBCheck(
 		playerX,
 		(playerX + playerWidth),
@@ -86,5 +76,6 @@ void Update(Player& player) {
 		bullet2Y,
 		(bullet2Y + bullet2Height))) {
 		bullet2Active = false;
-	} */
+	}
+	*/
 }
