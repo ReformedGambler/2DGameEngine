@@ -6,6 +6,9 @@
 
 class Bullet : public Entity {
 public:
+	float velocityX{};
+	float velocityY{};
+
 	Bullet(Vector2 position,
 		   Vector2 hitboxSize,
 		   float speed,

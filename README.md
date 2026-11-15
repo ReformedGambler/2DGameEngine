@@ -12,18 +12,7 @@ update		->	Main Update functions (updates deltaTime)
 window		->	Boilerplate for window application
 
 Normal updates:
-1) Changed enemy and its bullets debug rendering colour to red.
-2) Modified bullet handling in enemy to be dynamic,
-   can now make different types of bullets for each attack.
+1) Added spiral attack
 
 Problem updates:
-1)
-Problem:
-	Brushes kept being created which led to a memory leak.
-Solution:
-	Initialize once in constructor.
-2)
-Problem:
-	Bullets were not destroyed which led to more memory leakage.
-Solution:
-	Loop through each bullet in the vector then erase it, else move on.
+X
