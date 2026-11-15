@@ -4,8 +4,6 @@
 #include "vector2.h"
 #include "renderer.h"
 
-class Renderer;
-
 class Entity {
 public:
 	Entity(Vector2 position,

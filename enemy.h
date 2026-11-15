@@ -9,7 +9,8 @@
 class Enemy : public Entity {
 private:
 	float shootTimer{};
-	float shootInterval{};
+	std::vector<Bullet> bullets;
+	ID2D1SolidColorBrush* brush{};
 
 public:
 	Enemy(Vector2 position,
@@ -19,12 +20,26 @@ public:
 		  float damage
 	);
 
-	std::vector<Bullet> bullets;
-
-	// Bullet
-	void SpawnBullet();
-	void SpawnBulletWithDelay(double deltaTime, float seconds);
-	void StraightDown(double deltaTime, Bullet& bullet);
+	void SpawnBullet(
+		int bulletAmount,
+		float speed,
+		float hitboxSizeX,
+		float hitboxSizeY
+	);
+	void SpawnBulletDelay(
+		double deltaTime,
+		float seconds,
+		int bulletAmount,
+		float speed,
+		float hitboxSizeX,
+		float hitboxSizeY
+	);
+	void StraightDown(
+		double deltaTime,
+		Bullet& bullet
+	);
+	void Attack_1(double deltaTime);
+	void EraseBullet();
 
 	void Update(double deltaTime) override;
 	void Render() override;

@@ -45,20 +45,25 @@ bool InitDirect2D(HWND hwnd) {
     return SUCCEEDED(hr);
 }
 
-void Render(Player& player, Enemy& enemy)
-{
-    renderTarget->BeginDraw();
-
+void ScalingFactor() {
     renderTarget->SetTransform(
         D2D1::Matrix3x2F::Scale(
             scalingFactor,
             scalingFactor
         )
     );
+}
 
-    // Background
+void WhiteBackground() {
     renderTarget->Clear(
         D2D1::ColorF(D2D1::ColorF::White));
+}
+
+void Render(Player& player, Enemy& enemy)
+{
+    renderTarget->BeginDraw();
+    ScalingFactor();
+    WhiteBackground();
 
     // Debug Rendering
     if (debugRender) {

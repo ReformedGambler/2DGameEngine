@@ -16,6 +16,7 @@ inline bool debugRender{ true };
 float CalculateScalingFactor();
 HRESULT D2D1CreateFactory();
 bool InitDirect2D(HWND hwnd);
+void ScalingFactor();
 void Render(Player& player, Enemy& enemy);
 
 #endif

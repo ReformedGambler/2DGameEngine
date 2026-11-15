@@ -49,7 +49,9 @@ bool AABBCheck(float playerMinX,
 	return false;
 } */
 
-void Update(Player& player, Enemy& enemy) {
+void Update(
+	Player& player,
+	Enemy& enemy) {
 	UpdateTimer();
 	player.Update(deltaTime);
 	enemy.Update(deltaTime);

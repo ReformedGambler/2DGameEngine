@@ -12,35 +12,50 @@ Enemy::Enemy(
 		   speed,
 		   health,
 		   damage) {
-
+	// Initialize brush to solid red brush
+	renderTarget->CreateSolidColorBrush(
+		D2D1::ColorF(D2D1::ColorF::Red),
+		&brush
+	);
 }
 
-void Enemy::SpawnBullet() {
-	float bulletHitboxSizeX{ 5.0f };
-	float bulletHitboxSizeY{ 10.0f };
-
-	for (int i = 0; i < 50; i++) {
+void Enemy::SpawnBullet(
+	int bulletAmount,
+	float speed,
+	float hitboxSizeX,
+	float hitboxSizeY) {
+	for (int i = 0; i < bulletAmount; i++) {
 		Vector2 centre(
-			(position.x + hitboxSize.x / 2.0f) - (bulletHitboxSizeX / 2.0f),
+			(position.x + hitboxSize.x / 2.0f) - (hitboxSizeX / 2.0f),
 			position.y + hitboxSize.y / 2.0f
 		);
 
 		bullets.emplace_back(
 			centre,
 			Vector2(
-				bulletHitboxSizeX,
-				bulletHitboxSizeY),
-			100.0f,
+				hitboxSizeX,
+				hitboxSizeY),
+			speed,
 			0.0f,
 			0.0f
 		);
 	}
 }
 
-void Enemy::SpawnBulletWithDelay(double deltaTime, float seconds) {
+void Enemy::SpawnBulletDelay(
+	double deltaTime,
+	float seconds,
+	int bulletAmount,
+	float speed,
+	float hitboxSizeX,
+	float hitboxSizeY) {
 	shootTimer += deltaTime;
 	if (shootTimer >= seconds) {
-		SpawnBullet();
+		SpawnBullet(
+			bulletAmount,
+			speed,
+			hitboxSizeX,
+			hitboxSizeY);
 		shootTimer = { 0.0f };
 	}
 }
@@ -49,11 +64,27 @@ void Enemy::StraightDown(double deltaTime, Bullet& bullet) {
 	bullet.position.y += bullet.speed * deltaTime;
 }
 
-void Enemy::Update(double deltaTime) {
-	SpawnBulletWithDelay(deltaTime, 2.0f);
+void Enemy::Attack_1(double deltaTime) {
+	SpawnBulletDelay(deltaTime, 2.0f, 50, 100.0f, 5.0f, 10.0f);
 	for (auto& bullet : bullets) {
 		StraightDown(deltaTime, bullet);
 	}
+}
+
+void Enemy::EraseBullet() {
+	for (auto it = bullets.begin(); it != bullets.end();) {
+		if (it->IsOffScreen()) {
+			it = bullets.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
+}
+
+void Enemy::Update(double deltaTime) {
+	Attack_1(deltaTime);
+	EraseBullet();
 }
 
 void Enemy::Render() {
@@ -61,15 +92,10 @@ void Enemy::Render() {
 }
 
 void Enemy::DebugRender() {
+	// Render each bullet's hitbox
 	for (auto& bullet : bullets) {
 		bullet.DebugRender();
 	}
-
-	// Change brush to solid black brush
-	renderTarget->CreateSolidColorBrush(
-		D2D1::ColorF(D2D1::ColorF::Black),
-		&brush
-	);
 
 	// Fill rectangle configurations
 	D2D1_RECT_F rect = D2D1::RectF(

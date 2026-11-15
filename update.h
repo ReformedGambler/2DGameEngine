@@ -16,6 +16,9 @@ void InitTimer();
 void UpdateTimer();
 //void BulletMovement();
 //bool AABBCheck();
-void Update(Player& player, Enemy& enemy);
+void Update(
+	Player& player,
+	Enemy& enemy
+);
 
 #endif

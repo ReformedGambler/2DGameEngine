@@ -12,7 +12,11 @@ Player::Player(
 		   speed,
 		   health,
 		   damage) {
-
+	// Initialize brush to solid black brush
+	renderTarget->CreateSolidColorBrush(
+		D2D1::ColorF(D2D1::ColorF::Black),
+		&brush
+	);
 }
 
 void Player::MouseInput() {
@@ -56,12 +60,6 @@ void Player::Render() {
 }
 
 void Player::DebugRender() {
-	// Change brush to solid black brush
-	renderTarget->CreateSolidColorBrush(
-		D2D1::ColorF(D2D1::ColorF::Black),
-		&brush
-	);
-
 	// Fill rectangle configurations
 	D2D1_RECT_F rect = D2D1::RectF(
 		position.x,

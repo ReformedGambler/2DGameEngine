@@ -4,6 +4,9 @@
 #include <Windows.h>
 #include "renderer.h"
 
+inline int systemWidth{ GetSystemMetrics(SM_CXSCREEN) };
+inline int systemHeight{ GetSystemMetrics(SM_CYSCREEN) };
+
 // Initialize WndProc
 LRESULT CALLBACK WndProc(
     _In_    HWND hwnd,

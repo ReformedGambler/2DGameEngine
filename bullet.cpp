@@ -12,7 +12,16 @@ Bullet::Bullet(
            speed,
            health,
            damage) {
+    // Initialize brush to solid red brush
+    renderTarget->CreateSolidColorBrush(
+        D2D1::ColorF(D2D1::ColorF::Red),
+        &brush
+    );
+}
 
+bool Bullet::IsOffScreen() const {
+    return position.x < 0 || position.x > systemWidth ||
+           position.y < 0 || position.y > systemHeight;
 }
 
 void Bullet::Update(double deltaTime) {
@@ -24,12 +33,6 @@ void Bullet::Render() {
 }
 
 void Bullet::DebugRender() {
-    // Change brush to solid black brush
-    renderTarget->CreateSolidColorBrush(
-        D2D1::ColorF(D2D1::ColorF::Black),
-        &brush
-    );
-
     // Fill rectangle configurations
     D2D1_RECT_F rect = D2D1::RectF(
         position.x,
