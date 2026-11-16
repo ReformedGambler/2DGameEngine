@@ -24,6 +24,10 @@ add_executable(2DGameEngine WIN32
   collision.h
   bullet.cpp
   bullet.h
+  bulletpatterns.cpp
+  bulletpatterns.h
+  straightdown.cpp
+  straightdown.h
 )
 
 target_link_libraries(2DGameEngine PRIVATE d2d1)

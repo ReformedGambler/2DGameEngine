@@ -6,18 +6,15 @@
 
 #include "entity.h"
 #include "bullet.h"
+#include "straightdown.h"
 
 class Enemy : public Entity {
 private:
-	float shootTimer{};
-
 	std::vector<Bullet> bullets;
-
 	ID2D1SolidColorBrush* brush{};
 
-	const float PI{ 3.1416f };
-	float currentAngle{};
-	float angleIncrement{ 50.0f };
+	// BulletPatterns
+	StraightDown straightDown;
 
 public:
 	Enemy(Vector2 position,
@@ -27,38 +24,7 @@ public:
 		  float damage
 	);
 
-	void SpawnBullet(
-		int bulletAmount,
-		float speed,
-		float hitboxSizeX,
-		float hitboxSizeY
-	);
-	void SpawnBulletRotated(
-		int bulletAmount,
-		float speed,
-		float hitboxSizeX,
-		float hitboxSizeY
-	);
-	void SpawnBulletDelay(
-		double deltaTime,
-		float seconds,
-		int bulletAmount,
-		float speed,
-		float hitboxSizeX,
-		float hitboxSizeY,
-		int type
-	);
-	void StraightDown(
-		double deltaTime,
-		Bullet& bullet
-	);
-	void Spiral(
-		double deltaTime,
-		Bullet& bullet
-	);
-	void Attack_1(double deltaTime);
-	void Attack_2(double deltaTime);
-	void EraseBullet();
+	void TestAttack(double deltaTime);
 
 	void Update(double deltaTime) override;
 	void Render() override;

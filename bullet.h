@@ -1,8 +1,8 @@
 #ifndef GAMEENGINE_BULLET_H
 #define GAMEENGINE_BULLET_H
 
-#include "entity.h"
-#include "window.h"
+#include "entity.h"		// For Inheritance
+#include "window.h"		// For IsOffScreen()
 
 class Bullet : public Entity {
 public:
