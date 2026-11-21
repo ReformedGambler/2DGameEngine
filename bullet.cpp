@@ -3,7 +3,7 @@
 Bullet::Bullet(
     Vector2 position,
     Vector2 hitboxSize,
-    float speed,
+    float maxSpeed,
     float damage)
     :
     position(position),

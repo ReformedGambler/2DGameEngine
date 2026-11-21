@@ -26,9 +26,10 @@ window			->	Boilerplate for window application
 To-do:
 * Next commit should be fixing the memory leakage
 * Separate gravity from playermovement files
+* Create a config struct for bullet-patterns
 
 Normal updates:
-* Added gravity and flight
+X
 
 Problem updates:
 1)

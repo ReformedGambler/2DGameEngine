@@ -19,11 +19,11 @@ public:
 
 	const float accelerationX{ 800.0f };
 	const float decelerationX{ 400.0f };
-	const float accelerationY{ 7.5f };
-	const float decelerationY{ 500.0f };
+	const float accelerationY{ 5.0f };
+	const float decelerationY{ 750.0f };
 
-	const float maxFlightSpeed{ 200.0f };
-	const float maxFallSpeed{ 150.0f };
+	const float maxFlightSpeed{ 250.0f };
+	const float maxFallSpeed{ 300.0f };
 	const float gravity{ 500.0f };
 
 	Player(Vector2 position,

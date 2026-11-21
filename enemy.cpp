@@ -20,20 +20,6 @@ Enemy::Enemy(
 }
 
 void Enemy::TestAttack_1(float deltaTime) {
-	straightDown.Continuous(
-		deltaTime,
-		1.0f,
-		straightDown.bullets,
-		position,
-		hitboxSize,
-		Vector2(5.0f, 20.0f),
-		1,
-		300.0f
-	);
-	straightDown.Update(deltaTime, straightDown.bullets);
-}
-
-void Enemy::TestAttack_2(float deltaTime) {
 	spiral.Continuous(
 		deltaTime,
 		0.005f,
@@ -42,15 +28,15 @@ void Enemy::TestAttack_2(float deltaTime) {
 		hitboxSize,
 		Vector2(5.0f, 5.0f),
 		1,
-		100.0f,
-		10.0f
+		150.0f,
+		angleIncrement
 	);
 	spiral.Update(deltaTime, spiral.bullets);
+	angleIncrement += angleIncrementOffset;
 }
 
 void Enemy::Update(float deltaTime) {
 	TestAttack_1(deltaTime);
-	TestAttack_2(deltaTime);
 }
 
 void Enemy::Render() {
@@ -58,10 +44,6 @@ void Enemy::Render() {
 }
 
 void Enemy::DebugRender() {
-	// Render each bullet of straightDown's hitbox
-	for (auto& bullet : straightDown.bullets) {
-		bullet.DebugRender();
-	}
 	// Render each bullet of spiral's hitbox
 	for (auto& bullet : spiral.bullets) {
 		bullet.DebugRender();

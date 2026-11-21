@@ -24,7 +24,7 @@ public:
 		Vector2 enemyHitboxSize,
 		Vector2 bulletHitboxSize,
 		int bulletAmount,
-		float speed
+		float maxSpeed
 	);
 
 	void Continuous(
@@ -35,7 +35,7 @@ public:
 		Vector2 enemyHitboxSize,
 		Vector2 bulletHitboxSize,
 		int bulletAmount,
-		float speed
+		float maxSpeed
 	);
 
 	void EraseBullet(
