@@ -4,22 +4,26 @@
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
-float currentCounter{};
-float previousCounter{};
+LONGLONG currentCounter{};
+LONGLONG previousCounter{};
 
 void InitTimer() {
-	QueryPerformanceCounter(&counter);
-	QueryPerformanceFrequency(&frequency);
+	QueryPerformanceCounter(&counter);		// How many ticks have elapsed (CPU's Timestamp Counter)
+	QueryPerformanceFrequency(&frequency);	// How many ticks per second
 
-	previousCounter = static_cast<float>(counter.QuadPart);
+	previousCounter = counter.QuadPart;
 }
 
 void UpdateTimer() {
 	QueryPerformanceCounter(&counter);
 
-	currentCounter = static_cast<float>(counter.QuadPart);
-	deltaTime = (currentCounter - previousCounter) /
-				static_cast<float>(frequency.QuadPart);
+	currentCounter = counter.QuadPart;
+
+	deltaTime = static_cast<float>(
+			static_cast<double>(currentCounter - previousCounter) /
+			static_cast<double>(frequency.QuadPart)
+		);
+
 	previousCounter = currentCounter;
 }
 
