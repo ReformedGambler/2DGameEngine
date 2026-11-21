@@ -12,25 +12,25 @@ public:
 		Vector2 enemyHitboxSize,
 		Vector2 bulletHitboxSize,
 		int bulletAmount,
-		float speed,
+		float maxSpeed,
 		float angleIncrement
 	);
 
 	// Overloading
 	void Continuous(
-		double deltaTime,
+		float deltaTime,
 		float secondsInterval,
 		std::vector<Bullet>& bullets,
 		Vector2 enemyPosition,
 		Vector2 enemyHitboxSize,
 		Vector2 bulletHitboxSize,
 		int bulletAmount,
-		float speed,
+		float maxSpeed,
 		float angleIncrement
 	);
 
 	void Update(
-		double deltaTime,
+		float deltaTime,
 		std::vector<Bullet>& bullets
 	);
 };

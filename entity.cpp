@@ -3,13 +3,13 @@
 Entity::Entity(
 	Vector2 position,
 	Vector2 hitboxSize,
-	float speed,
+	float maxSpeed,
 	float health,
 	float damage)
 	:
 	position(position),
 	hitboxSize(hitboxSize),
-	speed(speed),
+	maxSpeed(maxSpeed),
 	health(health),
 	damage(damage)
 	{

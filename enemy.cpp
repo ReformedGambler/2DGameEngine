@@ -3,13 +3,13 @@
 Enemy::Enemy(
 	Vector2 position,
 	Vector2 hitboxSize,
-	float speed,
+	float maxSpeed,
 	float health,
 	float damage)
 	:
 	Entity(position,
 		   hitboxSize,
-		   speed,
+		   maxSpeed,
 		   health,
 		   damage) {
 	// Initialize brush to solid red brush

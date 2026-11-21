@@ -7,16 +7,17 @@
 
 class Bullet {
 public:
-	float velocityX{};
-	float velocityY{};
 	Vector2 position;
 	Vector2 hitboxSize;
-	float speed;
+	float maxSpeed;
 	float damage;
+
+	float velocityX{};
+	float velocityY{};
 
 	Bullet(Vector2 position,
 		   Vector2 hitboxSize,
-		   float speed,
+		   float maxSpeed,
 		   float damage
 	);
 

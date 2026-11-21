@@ -7,7 +7,7 @@ void Spiral::Once(
 	Vector2 enemyHitboxSize,
 	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed,
+	float maxSpeed,
 	float angleIncrement) {
 	for (int i = 0; i < bulletAmount; i++) {
 		Vector2 spawn(
@@ -23,14 +23,14 @@ void Spiral::Once(
 			Vector2(
 				bulletHitboxSize.x,
 				bulletHitboxSize.y),
-			speed,
+			maxSpeed,
 			0.0f
 		);
 
 		radians = currentAngle * (PI / 180.0f);
 
-		bullets.back().velocityX = speed * std::cos(radians);
-		bullets.back().velocityY = speed * std::sin(radians);
+		bullets.back().velocityX = maxSpeed * std::cos(radians);
+		bullets.back().velocityY = maxSpeed * std::sin(radians);
 
 		currentAngle += angleIncrement;
 
@@ -42,14 +42,14 @@ void Spiral::Once(
 
 // Overloading
 void Spiral::Continuous(
-	double deltaTime,
+	float deltaTime,
 	float secondsInterval,
 	std::vector<Bullet>& bullets,
 	Vector2 enemyPosition,
 	Vector2 enemyHitboxSize,
 	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed,
+	float maxSpeed,
 	float angleIncrement) {
 	shootTimer += deltaTime;
 	if (shootTimer >= secondsInterval) {
@@ -68,7 +68,7 @@ void Spiral::Continuous(
 				bulletHitboxSize.y
 			),
 			bulletAmount,
-			speed,
+			maxSpeed,
 			angleIncrement
 		);
 		shootTimer = { 0.0f };
@@ -76,7 +76,7 @@ void Spiral::Continuous(
 }
 
 void Spiral::Update(
-	double deltaTime,
+	float deltaTime,
 	std::vector<Bullet>& bullets) {
 	for (auto& bullet : bullets) {
 		bullet.position.x += bullet.velocityX * deltaTime;

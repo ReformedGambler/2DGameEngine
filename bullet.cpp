@@ -8,7 +8,7 @@ Bullet::Bullet(
     :
     position(position),
     hitboxSize(hitboxSize),
-    speed(speed),
+    maxSpeed(maxSpeed),
     damage(damage) {
     // Initialize brush to solid red brush
     renderTarget->CreateSolidColorBrush(

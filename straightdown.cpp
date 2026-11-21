@@ -1,10 +1,10 @@
 #include "straightdown.h"
 
 void StraightDown::Update(
-	double deltaTime,
+	float deltaTime,
 	std::vector<Bullet>& bullets) {
 	for (auto& bullet : bullets) {
-		bullet.position.y += bullet.speed * deltaTime;
+		bullet.position.y += bullet.maxSpeed * deltaTime;
 	}
 	EraseBullet(bullets);
 }

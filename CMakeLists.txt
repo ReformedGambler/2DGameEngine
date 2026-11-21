@@ -18,6 +18,8 @@ add_executable(2DGameEngine WIN32
   vector2.h
   player.cpp
   player.h
+  playermovement.cpp
+  playermovement.h
   enemy.cpp
   enemy.h
   bullet.cpp

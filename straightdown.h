@@ -6,7 +6,7 @@
 class StraightDown : public BulletPatterns {
 public:
 	void Update(
-		double deltaTime,
+		float deltaTime,
 		std::vector<Bullet>& bullets
 	);
 };

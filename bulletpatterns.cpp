@@ -10,7 +10,7 @@ void BulletPatterns::Once(
 	Vector2 enemyHitboxSize,
 	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed) {
+	float maxSpeed) {
 	for (int i = 0; i < bulletAmount; i++) {
 		Vector2 spawn(
 			enemyPosition.x + enemyHitboxSize.x / 2.0f
@@ -25,7 +25,7 @@ void BulletPatterns::Once(
 			Vector2(
 				bulletHitboxSize.x,
 				bulletHitboxSize.y),
-			speed,
+			maxSpeed,
 			0.0f
 		);
 	}
@@ -39,7 +39,7 @@ void BulletPatterns::Continuous(
 	Vector2 enemyHitboxSize,
 	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed) {
+	float maxSpeed) {
 	shootTimer += deltaTime;
 	if (shootTimer >= secondsInterval) {
 		Once(
@@ -57,7 +57,7 @@ void BulletPatterns::Continuous(
 				bulletHitboxSize.y
 			),
 			bulletAmount,
-			speed
+			maxSpeed
 		);
 		shootTimer = { 0.0f };
 	}

@@ -6,19 +6,18 @@
 
 class Entity {
 public:
+	Vector2 position;
+	Vector2 hitboxSize;
+	float maxSpeed;
+	float damage;
+	float health;
+
 	Entity(Vector2 position,
 		   Vector2 hitboxSize,
-		   float speed,
+		   float maxSpeed,
 		   float health,
 		   float damage
 	);
-
-	Vector2 position;
-	Vector2 hitboxSize;
-
-	float health;
-	float damage;
-	float speed;
 
 	void TakeDamage(float damageTaken);
 	void Heal(float healAmount);
