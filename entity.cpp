@@ -24,7 +24,7 @@ void Entity::Heal(float healAmount) {
 	health += healAmount;
 }
 
-void Entity::Update(double deltaTime) {
+void Entity::Update(float deltaTime) {
 
 }
 

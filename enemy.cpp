@@ -19,7 +19,7 @@ Enemy::Enemy(
 	);
 }
 
-void Enemy::TestAttack_1(double deltaTime) {
+void Enemy::TestAttack_1(float deltaTime) {
 	straightDown.Continuous(
 		deltaTime,
 		1.0f,
@@ -33,7 +33,7 @@ void Enemy::TestAttack_1(double deltaTime) {
 	straightDown.Update(deltaTime, straightDown.bullets);
 }
 
-void Enemy::TestAttack_2(double deltaTime) {
+void Enemy::TestAttack_2(float deltaTime) {
 	spiral.Continuous(
 		deltaTime,
 		0.005f,
@@ -48,7 +48,7 @@ void Enemy::TestAttack_2(double deltaTime) {
 	spiral.Update(deltaTime, spiral.bullets);
 }
 
-void Enemy::Update(double deltaTime) {
+void Enemy::Update(float deltaTime) {
 	TestAttack_1(deltaTime);
 	TestAttack_2(deltaTime);
 }

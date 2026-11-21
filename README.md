@@ -22,23 +22,14 @@ update			->	Main Update functions (updates deltaTime and entities)
 |
 window			->	Boilerplate for window application
 
-* Memory usage might be slowly incrementing indefinitely
+* Next commit should be fixing the memory leakage and separating physics into reusable functions
 
 Normal updates:
-1)	Separated bullet class from entity class to split responsibilities.
-2)	Each bullet-pattern now initializes with its own vector of bullets.
-3)	Enemy now controls its own attack sequences.
-4)	For now each bullet-pattern shall overload the bulletpatterns functions.
-5)	Each bullet-patterns controls erasing its own bullets.
-6)	Added back straightdown and spiral attack with cleaner handling.
+1)	Replaced deltaTime datatype from double to float
+2)	Added acceleration and deceleration to player movement
 
 Problem updates:
-1) 
-Problem:	Bullet was not centered when spawning.
-Solution:	Take centre of enemyHitboxSize.x - (bulletHitboxSize.x / 2.0f)
-			to shift it half of the length of bulletHitboxSize to the left.
-Outcome:	Bullet now spawns completely centered to the enemyHitbox.
-2)
+1)
 Problem:	Memory usage is still increasing slowly indefinitely
 Solution:	...
 Outcome:	...

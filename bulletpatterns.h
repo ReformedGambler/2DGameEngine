@@ -28,7 +28,7 @@ public:
 	);
 
 	void Continuous(
-		double deltaTime,
+		float deltaTime,
 		float secondsInterval,
 		std::vector<Bullet>& bullets,
 		Vector2 enemyPosition,

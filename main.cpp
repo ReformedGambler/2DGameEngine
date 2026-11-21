@@ -15,7 +15,7 @@ int WINAPI WinMain(
 		Player player(
 			Vector2(615.0f, 600.0f),
 			Vector2(20, 40),
-			200.0f,
+			175.0f,
 			100.0f,
 			1.0f
 		);

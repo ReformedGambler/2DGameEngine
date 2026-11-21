@@ -32,7 +32,7 @@ void BulletPatterns::Once(
 }
 
 void BulletPatterns::Continuous(
-	double deltaTime,
+	float deltaTime,
 	float secondsInterval,
 	std::vector<Bullet>& bullets,
 	Vector2 enemyPosition,

@@ -23,7 +23,7 @@ public:
 	void TakeDamage(float damageTaken);
 	void Heal(float healAmount);
 
-	virtual void Update(double deltaTime);
+	virtual void Update(float deltaTime);
 	virtual void Render();
 };
 

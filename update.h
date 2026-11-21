@@ -7,7 +7,7 @@
 class Player;
 class Enemy;
 
-inline double deltaTime{};
+inline float deltaTime{};
 
 // 1280x720 is the base measurements
 // Scaling factor multiplies it automatically

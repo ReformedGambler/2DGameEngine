@@ -23,7 +23,7 @@ void Player::MouseInput() {
 
 }
 
-void Player::KeyboardInput(double deltaTime) {
+void Player::KeyboardInput(float deltaTime) {
 	float moveX{};
 	float moveY{};
 	float length{};
@@ -33,12 +33,14 @@ void Player::KeyboardInput(double deltaTime) {
 	}
 	if (GetAsyncKeyState('A')) {
 		moveX -= 1.0f;
+		velocityX -= accelerationX * deltaTime;
 	}
 	if (GetAsyncKeyState('S')) {
 		moveY += 1.0f;
 	}
 	if (GetAsyncKeyState('D')) {
 		moveX += 1.0f;
+		velocityX += accelerationX * deltaTime;
 	}
 
 	length = sqrtf(moveX * moveX + moveY * moveY);
@@ -47,11 +49,25 @@ void Player::KeyboardInput(double deltaTime) {
 		moveY /= length;
 	}
 
-	position.x += moveX * speed * deltaTime;
+	velocityX = std::clamp(velocityX, -speed, speed);
+	if (moveX == 0.0f && velocityX > 0.0f) {
+		velocityX -= decelerationX * deltaTime;
+		if (velocityX < 0.0f) {
+			velocityX = 0.0f;
+		}
+	}
+	if (moveX == 0.0f && velocityX < 0.0f) {
+		velocityX += decelerationX * deltaTime;
+		if (velocityX > 0.0f) {
+			velocityX = 0.0f;
+		}
+	}
+	
+	position.x += velocityX * deltaTime;
 	position.y += moveY * speed * deltaTime;
 }
 
-void Player::Update(double deltaTime) {
+void Player::Update(float deltaTime) {
 	KeyboardInput(deltaTime);
 }
 

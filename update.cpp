@@ -4,22 +4,22 @@
 
 LARGE_INTEGER counter{};
 LARGE_INTEGER frequency{};
-double currentCounter{};
-double previousCounter{};
+float currentCounter{};
+float previousCounter{};
 
 void InitTimer() {
 	QueryPerformanceCounter(&counter);
 	QueryPerformanceFrequency(&frequency);
 
-	previousCounter = static_cast<double>(counter.QuadPart);
+	previousCounter = static_cast<float>(counter.QuadPart);
 }
 
 void UpdateTimer() {
 	QueryPerformanceCounter(&counter);
 
-	currentCounter = static_cast<double>(counter.QuadPart);
+	currentCounter = static_cast<float>(counter.QuadPart);
 	deltaTime = (currentCounter - previousCounter) /
-				static_cast<double>(frequency.QuadPart);
+				static_cast<float>(frequency.QuadPart);
 	previousCounter = currentCounter;
 }
 

@@ -27,10 +27,10 @@ public:
 	);
 
 	// Attack sequences
-	void TestAttack_1(double deltaTime);
-	void TestAttack_2(double deltaTime);
+	void TestAttack_1(float deltaTime);
+	void TestAttack_2(float deltaTime);
 
-	void Update(double deltaTime) override;
+	void Update(float deltaTime) override;
 	void Render() override;
 
 	void DebugRender();
