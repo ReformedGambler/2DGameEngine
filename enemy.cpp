@@ -19,42 +19,38 @@ Enemy::Enemy(
 	);
 }
 
-/*
-float radians = currentAngle * (PI / 180.0f);
-
-bullets.back().velocityX = speed * std::cos(radians);
-bullets.back().velocityY = speed * std::sin(radians);
-
-angleIncrement += 1.0f;
-currentAngle += angleIncrement;
-
-if (currentAngle >= 360.0f) {
-	currentAngle -= 360.0f;
-}
-*/
-/*
-bullet.position.x += bullet.velocityX * deltaTime;
-bullet.position.y += bullet.velocityY * deltaTime;
-*/
-
-void Enemy::TestAttack(double deltaTime) {
-	straightDown.SetSpawnOffset(Vector2(0.0f, 0.0f));
-	straightDown.Cont(
+void Enemy::TestAttack_1(double deltaTime) {
+	straightDown.Continuous(
 		deltaTime,
 		1.0f,
-		bullets,
+		straightDown.bullets,
 		position,
 		hitboxSize,
+		Vector2(5.0f, 20.0f),
+		1,
+		300.0f
+	);
+	straightDown.Update(deltaTime, straightDown.bullets);
+}
+
+void Enemy::TestAttack_2(double deltaTime) {
+	spiral.Continuous(
+		deltaTime,
+		0.005f,
+		spiral.bullets,
+		position,
+		hitboxSize,
+		Vector2(5.0f, 5.0f),
 		1,
 		100.0f,
-		5.0f,
-		5.0f
+		10.0f
 	);
+	spiral.Update(deltaTime, spiral.bullets);
 }
 
 void Enemy::Update(double deltaTime) {
-	TestAttack(deltaTime);
-	straightDown.Update(deltaTime, bullets);
+	TestAttack_1(deltaTime);
+	TestAttack_2(deltaTime);
 }
 
 void Enemy::Render() {
@@ -62,8 +58,12 @@ void Enemy::Render() {
 }
 
 void Enemy::DebugRender() {
-	// Render each bullet's hitbox
-	for (auto& bullet : bullets) {
+	// Render each bullet of straightDown's hitbox
+	for (auto& bullet : straightDown.bullets) {
+		bullet.DebugRender();
+	}
+	// Render each bullet of spiral's hitbox
+	for (auto& bullet : spiral.bullets) {
 		bullet.DebugRender();
 	}
 

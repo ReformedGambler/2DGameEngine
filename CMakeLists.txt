@@ -20,14 +20,17 @@ add_executable(2DGameEngine WIN32
   player.h
   enemy.cpp
   enemy.h
-  collision.cpp
-  collision.h
   bullet.cpp
   bullet.h
   bulletpatterns.cpp
   bulletpatterns.h
   straightdown.cpp
   straightdown.h
-)
+  spiral.cpp
+  spiral.h
+  physics.cpp
+  physics.h
+  collision.cpp
+  collision.h)
 
 target_link_libraries(2DGameEngine PRIVATE d2d1)

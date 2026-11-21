@@ -5,16 +5,18 @@
 #include <cmath>
 
 #include "entity.h"
-#include "bullet.h"
+
+// BulletPatterns
 #include "straightdown.h"
+#include "spiral.h"
 
 class Enemy : public Entity {
 private:
-	std::vector<Bullet> bullets;
 	ID2D1SolidColorBrush* brush{};
 
 	// BulletPatterns
 	StraightDown straightDown;
+	Spiral spiral;
 
 public:
 	Enemy(Vector2 position,
@@ -24,7 +26,9 @@ public:
 		  float damage
 	);
 
-	void TestAttack(double deltaTime);
+	// Attack sequences
+	void TestAttack_1(double deltaTime);
+	void TestAttack_2(double deltaTime);
 
 	void Update(double deltaTime) override;
 	void Render() override;

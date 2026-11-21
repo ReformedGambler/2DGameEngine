@@ -6,36 +6,36 @@
 #include "bullet.h"
 
 class BulletPatterns {
-private:
+public:
 	Vector2 spawnOffset{ 0.0f, 0.0f };	// Spawnpoint of each bullet (default is centred)
 	const float PI{ 3.1416f };
+	float radians{};
 	float shootTimer{};					// Controls firing intervals
 	float currentAngle{};				// Tracks current spiral rotation
 	float angleIncrement{};				// Controls how much the angle changes per shot
 
-public:
+	std::vector<Bullet> bullets;
+
 	void SetSpawnOffset(Vector2 offset);
 
 	void Once(
 		std::vector<Bullet>& bullets,
-		Vector2 position,		// Enemy
-		Vector2 hitboxSize,		// Enemy
-		int bulletAmount,		// Bullet
-		float speed,			// Bullet
-		float hitboxSizeX,		// Bullet
-		float hitboxSizeY		// Bullet
+		Vector2 enemyPosition,
+		Vector2 enemyHitboxSize,
+		Vector2 bulletHitboxSize,
+		int bulletAmount,
+		float speed
 	);
 
-	void Cont(
+	void Continuous(
 		double deltaTime,
 		float secondsInterval,
 		std::vector<Bullet>& bullets,
-		Vector2 position,		// Enemy
-		Vector2 hitboxSize,		// Enemy
-		int bulletAmount,		// Bullet
-		float speed,			// Bullet
-		float hitboxSizeX,		// Bullet
-		float hitboxSizeY		// Bullet
+		Vector2 enemyPosition,
+		Vector2 enemyHitboxSize,
+		Vector2 bulletHitboxSize,
+		int bulletAmount,
+		float speed
 	);
 
 	void EraseBullet(

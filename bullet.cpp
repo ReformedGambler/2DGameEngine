@@ -4,14 +4,12 @@ Bullet::Bullet(
     Vector2 position,
     Vector2 hitboxSize,
     float speed,
-    float health,
     float damage)
     :
-    Entity(position,
-           hitboxSize,
-           speed,
-           health,
-           damage) {
+    position(position),
+    hitboxSize(hitboxSize),
+    speed(speed),
+    damage(damage) {
     // Initialize brush to solid red brush
     renderTarget->CreateSolidColorBrush(
         D2D1::ColorF(D2D1::ColorF::Red),
@@ -24,13 +22,12 @@ bool Bullet::IsOffScreen() const {
            position.y < 0 || position.y > systemHeight;
 }
 
-void Bullet::Update(double deltaTime) {
+/*void Bullet::Update(double deltaTime) {
 
-}
+}*/
+/*void Bullet::Render() {
 
-void Bullet::Render() {
-
-}
+}*/
 
 void Bullet::DebugRender() {
     // Fill rectangle configurations

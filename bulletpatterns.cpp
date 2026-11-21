@@ -6,53 +6,58 @@ void BulletPatterns::SetSpawnOffset(Vector2 offset) {
 
 void BulletPatterns::Once(
 	std::vector<Bullet>& bullets,
-	Vector2 position,
-	Vector2 hitboxSize,
+	Vector2 enemyPosition,
+	Vector2 enemyHitboxSize,
+	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed,
-	float hitboxSizeX,
-	float hitboxSizeY) {
+	float speed) {
 	for (int i = 0; i < bulletAmount; i++) {
 		Vector2 spawn(
-			position.x + hitboxSize.x / 2.0f
-			- hitboxSizeX / 2.0f + spawnOffset.x,
+			enemyPosition.x + enemyHitboxSize.x / 2.0f
+			+ spawnOffset.x - bulletHitboxSize.x / 2.0f,
 
-			position.y + hitboxSize.y / 2.0f
-			- hitboxSizeY / 2.0f + spawnOffset.y
+			enemyPosition.y + enemyHitboxSize.y / 2.0f
+			+ spawnOffset.y
 		);
 
 		bullets.emplace_back(
 			spawn,
 			Vector2(
-				hitboxSizeX,
-				hitboxSizeY),
+				bulletHitboxSize.x,
+				bulletHitboxSize.y),
 			speed,
-			0.0f,
 			0.0f
 		);
 	}
 }
 
-void BulletPatterns::Cont(
+void BulletPatterns::Continuous(
 	double deltaTime,
 	float secondsInterval,
 	std::vector<Bullet>& bullets,
-	Vector2 position,
-	Vector2 hitboxSize,
+	Vector2 enemyPosition,
+	Vector2 enemyHitboxSize,
+	Vector2 bulletHitboxSize,
 	int bulletAmount,
-	float speed,
-	float hitboxSizeX,
-	float hitboxSizeY) {
+	float speed) {
 	shootTimer += deltaTime;
 	if (shootTimer >= secondsInterval) {
 		Once(
 			bullets,
-			position,
-			hitboxSize,
+			Vector2(
+				enemyPosition.x,
+				enemyPosition.y
+			),
+			Vector2(
+				enemyHitboxSize.x,
+				enemyHitboxSize.y
+			),
+			Vector2(
+				bulletHitboxSize.x,
+				bulletHitboxSize.y
+			),
 			bulletAmount,
-			speed,
-			hitboxSizeX,
-			hitboxSizeY
+			speed
 		);
 		shootTimer = { 0.0f };
 	}
