@@ -7,4 +7,8 @@ namespace PlayerMovement {
 	void KeyboardInput(float deltaTime, Player& player);
 };
 
+namespace Gravity {
+	void ApplyGravity(float deltaTime, Player& player);
+}
+
 #endif

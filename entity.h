@@ -9,8 +9,8 @@ public:
 	Vector2 position;
 	Vector2 hitboxSize;
 	float maxSpeed;
-	float damage;
 	float health;
+	float damage;
 
 	Entity(Vector2 position,
 		   Vector2 hitboxSize,

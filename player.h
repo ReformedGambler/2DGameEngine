@@ -16,10 +16,15 @@ private:
 public:
 	float velocityX{};
 	float velocityY{};
-	float accelerationX{ 800.0f };
-	float decelerationX{ 400.0f };
-	float accelerationY{};
-	float decelerationY{};
+
+	const float accelerationX{ 800.0f };
+	const float decelerationX{ 400.0f };
+	const float accelerationY{ 7.5f };
+	const float decelerationY{ 500.0f };
+
+	const float maxFlightSpeed{ 200.0f };
+	const float maxFallSpeed{ 150.0f };
+	const float gravity{ 500.0f };
 
 	Player(Vector2 position,
 		   Vector2 hitboxSize,

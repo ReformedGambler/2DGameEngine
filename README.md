@@ -6,6 +6,7 @@ vector2			->	Base shared functionality for inheritance of coordinates
 |
 entity			->	Base shared functionality for inheritance of characters
 player			->	Player-specific functionality
+playermovement	->	PlayerMovement input and physics (change physics next time)
 enemy			->	Enemy-specific functionality
 |
 bullet			->	Bullet-specific functionality
@@ -22,11 +23,12 @@ update			->	Main Update functions (updates deltaTime and entities)
 |
 window			->	Boilerplate for window application
 
-* Next commit should be fixing the memory leakage and separating physics into reusable functions
+To-do:
+* Next commit should be fixing the memory leakage
+* Separate gravity from playermovement files
 
 Normal updates:
-1)	Created playermovement files as a sub-file for player to separate responsibilities
-2)	Changed all speed identifier names to maxSpeed because new movement feature taught me how to use velocityX
+* Added gravity and flight
 
 Problem updates:
 1)
