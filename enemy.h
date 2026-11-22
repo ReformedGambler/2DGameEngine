@@ -17,11 +17,10 @@ private:
 	// BulletPatterns
 	StraightDown straightDown;
 	Spiral spiral;
+	float angleIncrement{ 50.0f };
+	float angleIncrementOffset{ 0.0f };
 
 public:
-	float angleIncrement{ 50.0f };
-	float angleIncrementOffset{ 1.0f };
-
 	Enemy(Vector2 position,
 		  Vector2 hitboxSize,
 		  float maxSpeed,

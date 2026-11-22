@@ -77,10 +77,11 @@ void Spiral::Continuous(
 
 void Spiral::Update(
 	float deltaTime,
-	std::vector<Bullet>& bullets) {
+	std::vector<Bullet>& bullets,
+	float secondsInterval) {
 	for (auto& bullet : bullets) {
 		bullet.position.x += bullet.velocityX * deltaTime;
 		bullet.position.y += bullet.velocityY * deltaTime;
 	}
-	EraseBullet(bullets);
+	EraseBullet(bullets, secondsInterval, deltaTime);
 }

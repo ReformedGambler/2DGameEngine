@@ -10,6 +10,7 @@ public:
 	Vector2 spawnOffset{ 0.0f, 0.0f };	// Spawnpoint of each bullet (default is centred)
 	const float PI{ 3.1416f };
 	float radians{};
+	float eraseTimer{};					// Controls erasing bullets intervals
 	float shootTimer{};					// Controls firing intervals
 	float currentAngle{};				// Tracks current spiral rotation
 	float angleIncrement{};				// Controls how much the angle changes per shot
@@ -39,7 +40,9 @@ public:
 	);
 
 	void EraseBullet(
-		std::vector<Bullet>& bullets
+		std::vector<Bullet>& bullets,
+		float secondsInterval,
+		float deltaTime
 	);
 };
 

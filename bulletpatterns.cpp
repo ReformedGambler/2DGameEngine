@@ -64,13 +64,19 @@ void BulletPatterns::Continuous(
 }
 
 void BulletPatterns::EraseBullet(
-	std::vector<Bullet>& bullets) {
-	for (auto it = bullets.begin(); it != bullets.end();) {
-		if (it->IsOffScreen()) {
-			it = bullets.erase(it);
+	std::vector<Bullet>& bullets,
+	float secondsInterval,
+	float deltaTime) {
+	eraseTimer += deltaTime;
+	if (eraseTimer >= secondsInterval) {
+		for (auto it = bullets.begin(); it != bullets.end();) {
+			if (it->IsOffScreen()) {
+				it = bullets.erase(it);
+			}
+			else {
+				++it;
+			}
 		}
-		else {
-			++it;
-		}
+		eraseTimer = { 0.0f };
 	}
 }

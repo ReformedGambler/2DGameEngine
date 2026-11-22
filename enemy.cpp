@@ -22,16 +22,16 @@ Enemy::Enemy(
 void Enemy::TestAttack_1(float deltaTime) {
 	spiral.Continuous(
 		deltaTime,
-		0.005f,
+		0.001f,
 		spiral.bullets,
 		position,
 		hitboxSize,
-		Vector2(5.0f, 5.0f),
+		Vector2(2.5f, 2.5f),
 		1,
-		150.0f,
+		200.0f,
 		angleIncrement
 	);
-	spiral.Update(deltaTime, spiral.bullets);
+	spiral.Update(deltaTime, spiral.bullets, 1.0f);
 	angleIncrement += angleIncrementOffset;
 }
 

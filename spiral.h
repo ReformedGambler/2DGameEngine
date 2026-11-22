@@ -31,7 +31,8 @@ public:
 
 	void Update(
 		float deltaTime,
-		std::vector<Bullet>& bullets
+		std::vector<Bullet>& bullets,
+		float secondsInterval
 	);
 };
 

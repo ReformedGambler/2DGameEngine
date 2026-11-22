@@ -5,13 +5,16 @@
 #include "window.h"		// For IsOffScreen()
 #include "renderer.h"
 
+#include <wrl/client.h>
+
 class Bullet {
 public:
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> brush{ nullptr };
+
 	Vector2 position;
 	Vector2 hitboxSize;
 	float maxSpeed;
 	float damage;
-
 	float velocityX{};
 	float velocityY{};
 
@@ -22,9 +25,6 @@ public:
 	);
 
 	bool IsOffScreen() const;
-
-	//void Update(double deltaTime) override;
-	//void Render() override;
 
 	void DebugRender();
 };

@@ -13,7 +13,7 @@ Bullet::Bullet(
     // Initialize brush to solid red brush
     renderTarget->CreateSolidColorBrush(
         D2D1::ColorF(D2D1::ColorF::Red),
-        &brush
+        brush.GetAddressOf()                // Gives the address of the pointer to write to
     );
 }
 
@@ -21,13 +21,6 @@ bool Bullet::IsOffScreen() const {
     return position.x < 0 || position.x > systemWidth ||
            position.y < 0 || position.y > systemHeight;
 }
-
-/*void Bullet::Update(double deltaTime) {
-
-}*/
-/*void Bullet::Render() {
-
-}*/
 
 void Bullet::DebugRender() {
     // Fill rectangle configurations
@@ -41,7 +34,7 @@ void Bullet::DebugRender() {
     // Draw rectangle
     renderTarget->DrawRectangle(
         rect,
-        brush,
+        brush.Get(),                        // Gets the address of the pointer
         1.0f
     );
 }
